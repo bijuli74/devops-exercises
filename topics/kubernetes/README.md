@@ -1966,6 +1966,8 @@ kubectl run nginx --image=nginx --restart=Never --port 80 --expose
 
 <details>
 <summary>Why to create kind deployment, if pods can be launched with replicaset?</summary><br><b>
+
+ A **ReplicaSet** ensures that a specified number of pod replicas are running at any given time. However, a **Deployment** is a higher-level concept that manages ReplicaSets and provides declarative updates to Pods along with a lot of other useful features. Therefore, we usually use Deployments instead of directly using ReplicaSets, unless we require custom update orchestration or don't require updates at all.
 </b></details>
 
 <details>
@@ -2006,6 +2008,9 @@ They become candidates to for termination.
 
 <details>
 <summary>Describe how roll-back works</summary><br><b>
+
+ Rollback in K8s is a process of undoing changes to the deployed resouces such as Deployments, StatefulSets & DaemonSets. Rolling updates is the default strategy in K8s where the previous pod is cycled out & newer pod is bring in incrementally ensuring zero-downtime deployment without interrupting live traffic. 
+ Rollback Command: `kubectl rollout undo deployment <name_of_deployment> --to-revision=<version no>`
 </b></details>
 
 <details>
